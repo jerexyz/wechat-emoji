@@ -1,0 +1,22 @@
+<div class="expression">
+  <ul class="exp_hd list-unstyled">
+    <li class="exp_hd_item active" ng-class="{'active': vm.index == 1}" ng-click="vm.index = 1;">
+      <a href="javascript:;">QQ表情</a>
+    </li>
+    <li class="exp_hd_item " ng-class="{'active': vm.index == 2}" ng-click="vm.index = 2;">
+      <a href="javascript:;">符号表情</a>
+    </li>
+  </ul>
+  <div class="exp_bd" style="position: relative;">
+    <div class="exp_cont active" ng-class="{'active': vm.index == 1}">
+      <div class="qq_face">
+        <a ng-repeat="qqEmoji in ::vm.emojiData.QQFaceList" title="{{qqEmoji}}" type="qq" class="face">{{qqEmoji}}</a>
+      </div>
+    </div>
+    <div class="exp_cont" ng-class="{'active': vm.index == 2}">
+      <div class="emoji_face">
+        <a ng-repeat="emoji in ::vm.emojiData.EmojiList" title="{{emoji}}" type="emoji" class="face">{{emoji}}</a>
+      </div>
+    </div>
+  </div>
+</div>
