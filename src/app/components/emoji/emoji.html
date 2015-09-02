@@ -10,12 +10,12 @@
   <div class="exp_bd" style="position: relative;">
     <div class="exp_cont active" ng-class="{'active': vm.index == 1}">
       <div class="qq_face">
-        <a ng-repeat="qqEmoji in ::vm.emojiData.QQFaceList" title="{{qqEmoji}}" type="qq" class="face">{{qqEmoji}}</a>
+        <input type="button" ng-repeat="qqEmoji in ::vm.emojiData.QQFaceList" title="{{qqEmoji}}" data-type="qq" class="face" />
       </div>
     </div>
     <div class="exp_cont" ng-class="{'active': vm.index == 2}">
       <div class="emoji_face">
-        <a ng-repeat="emoji in ::vm.emojiData.EmojiList" title="{{emoji}}" type="emoji" class="face">{{emoji}}</a>
+        <input type="button" ng-repeat="emoji in ::vm.emojiData.EmojiList" title="{{emoji}}" data-type="emoji" class="face"/>
       </div>
     </div>
   </div>

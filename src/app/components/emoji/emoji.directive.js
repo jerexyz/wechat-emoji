@@ -1,5 +1,5 @@
 (function() {
-  'use strict';
+  //'use strict';
 
   angular
     .module('wechatEmoji')
@@ -17,12 +17,13 @@
     };
     return directive;
 
-    function linkFunc(scope, el, attr, vm) {
-      el.click(function(e) {
+    function linkFunc(scope, element, attr, vm) {
+      element.click(function(e) {
         var o = e.target;
-        if ("A" === o.tagName) {
-          var r = o.innerText || o.textContent,
-            i = o.getAttribute("type");
+        console.log(e);
+        if ("INPUT" === o.tagName) {
+          var r = o.getAttribute('title'),
+            i = o.getAttribute('data-type');
           switch (i) {
             case "qq":
               r = vm.getAppendText(r, i);
@@ -55,9 +56,64 @@
         return text;
       }
 
-      vm.appendToTextArea = function(text) {
-        console.log(text);
+      vm.appendToTextArea = function(html) {
+        //$('#test_text_area');
+        var ele = document.getElementById('test_text_area'),
+          sel, range;
+        if (ele) {
+          ele.focus();
+          pasteHtmlAtCaret(html);
+        }
       };
+
+      var lastnode;
+
+      function pasteHtmlAtCaret(html) {
+        var sel, range;
+        if (window.getSelection) {
+          console.log('...');
+          // IE9 and non-IE
+          sel = window.getSelection();
+          if (sel.getRangeAt && sel.rangeCount) {
+            console.log('2222')
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+
+            // Range.createContextualFragment() would be useful here but is
+            // only relatively recently standardized and is not supported in
+            // some browsers (IE9, for one)
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(),
+              node;
+              console.log(node);
+              node = el.firstChild
+            //while ((node = el.firstChild)) {
+              console.log(node);
+              lastNode = frag.appendChild(node);
+              console.log(lastNode);
+            //}
+            console.log(frag.firstChild);
+            var firstNode = frag.firstChild;
+            range.insertNode(frag);
+
+            // Preserve the selection
+            if (lastNode) {
+              range = range.cloneRange();
+              range.setStartAfter(lastNode);
+              range.collapse(true);
+              sel.removeAllRanges();
+              console.log(range);
+              sel.addRange(range);
+            }
+          }
+        } else if ((sel = document.selection) && sel.type != "Control") {
+          // IE < 9
+          var originalRange = sel.createRange();
+          originalRange.collapse(true);
+          sel.createRange().pasteHTML(html);
+        }
+      }
 
       vm.emojiData = {
         QQFaceList: ["微笑", "撇嘴", "色", "发呆", "得意", "流泪", "害羞", "闭嘴", "睡", "大哭", "尴尬", "发怒", "调皮", "呲牙", "惊讶", "难过", "酷", "冷汗", "抓狂", "吐", "偷笑", "愉快", "白眼", "傲慢", "饥饿", "困", "惊恐", "流汗", "憨笑", "悠闲", "奋斗", "咒骂", "疑问", "嘘", "晕", "疯了", "衰", "骷髅", "敲打", "再见", "擦汗", "抠鼻", "鼓掌", "糗大了", "坏笑", "左哼哼", "右哼哼", "哈欠", "鄙视", "委屈", "快哭了", "阴险", "亲亲", "吓", "可怜", "菜刀", "西瓜", "啤酒", "篮球", "乒乓", "咖啡", "饭", "猪头", "玫瑰", "凋谢", "嘴唇", "爱心", "心碎", "蛋糕", "闪电", "炸弹", "刀", "足球", "瓢虫", "便便", "月亮", "太阳", "礼物", "拥抱", "强", "弱", "握手", "胜利", "抱拳", "勾引", "拳头", "差劲", "爱你", "NO", "OK", "爱情", "飞吻", "跳跳", "发抖", "怄火", "转圈", "磕头", "回头", "跳绳", "投降", "激动", "乱舞", "献吻", "左太极", "右太极"],
