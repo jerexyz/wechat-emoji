@@ -1,5 +1,5 @@
 (function() {
-  //'use strict';
+  'use strict';
 
   angular
     .module('wechatEmoji')
@@ -75,7 +75,6 @@
           // IE9 and non-IE
           sel = window.getSelection();
           if (sel.getRangeAt && sel.rangeCount) {
-            console.log('2222')
             range = sel.getRangeAt(0);
             range.deleteContents();
 
@@ -85,8 +84,8 @@
             var el = document.createElement("div");
             el.innerHTML = html;
             var frag = document.createDocumentFragment(),
-              node;
-              console.log(node);
+              node,
+              lastNode;
               node = el.firstChild
             //while ((node = el.firstChild)) {
               console.log(node);
