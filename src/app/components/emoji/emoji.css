@@ -3423,7 +3423,7 @@
   width: 435px;
   height: 202px;
   margin-right: -1px;
-  background: url(/assets/images/qqfacePanel27fe59.png) no-repeat;
+  background: url(/assets/images/qqfacePane.png) no-repeat;
   -wekit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -3446,7 +3446,7 @@
 
 @media (-webkit-min-device-pixel-ratio:2) {
   .qq_face {
-    background: url(/assets/images/icon/qqfacePanel@2x27ddf8.png) no-repeat;
+    background: url(/assets/images/icon/qqfacePanel@2x.png) no-repeat;
     -webkit-background-size: 434px 202px;
     background-size: 434px 202px
   }
@@ -3457,7 +3457,7 @@
   width: 435px;
   height: 360px;
   margin-right: -1px;
-  background: url(/assets/images/emojiPanel27fe59.png) no-repeat;
+  background: url(/assets/images/emojiPanel.png) no-repeat;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -3480,7 +3480,7 @@
 
 @media (-webkit-min-device-pixel-ratio:2) {
   .emoji_face {
-    background: url(assets/images/icon/emojiPanel@2x27ddf8.png) no-repeat;
+    background: url(assets/images/icon/emojiPanel@2x.png) no-repeat;
     -webkit-background-size: 434px 347px;
     background-size: 434px 347px
   }
@@ -3490,7 +3490,7 @@
   overflow: hidden;
   width: 440px;
   height: 440px;
-  background: url(assets/images/icon/tusiji_expression27ddf8.png) no-repeat
+  background: url(assets/images/icon/tusiji_expression.png) no-repeat
 }
 
 .tuzki_face .face {
